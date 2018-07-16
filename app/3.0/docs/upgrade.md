@@ -7,7 +7,7 @@ title: Polymer 3.0 upgrade guide
 
 The Polymer modulizer tool automates most of the changes you need to make to upgrade a project from 2.x to 3.x.
 
-Polymer modulizer is still in pre-release, but has been fairly well-tested converting the Polymer library and elements. See the [README](https://github.com/Polymer/polymer-modulizer/blob/master/README.md) for the latest updates.
+Polymer modulizer is still in pre-release but has been fairly well-tested converting the Polymer library and elements. See the [README](https://github.com/Polymer/polymer-modulizer/blob/master/README.md) for the latest updates.
 
 **Start with a clean repo.** Before upgrading an element, make sure that any changes in your repo are committed, so you don't lose any previous changes, and can roll back to a previous state if you run into trouble. 
 {.alert .alert-info}
@@ -34,7 +34,7 @@ To upgrade a project:
 
 1.  Run modulizer.
 
-	  `modulizer --import-style name --out .` 
+      `modulizer --import-style name --out .` 
 
     The `--import-style name` option tells modulizer to write imports using package names instead of paths. You might want to omit this option when converting an application project. 
 
@@ -80,7 +80,7 @@ There are a few manual steps that may be required after converting a project usi
 
 1.  Fix imports that load polyfills.
 
-    In the past some elements have provided HTML imports for loading polyfills. For example, the neon-animation element provided an HTML import to load the web animations polyfill. 
+    In the past, some elements have provided HTML imports for loading polyfills. For example, the neon-animation element provided an HTML import to load the web animations polyfill. 
 
     In the ES6 module world, the extra file is no longer required. Any required polyfills should be loaded at the application level. 
     
@@ -104,7 +104,7 @@ Before upgrading an element, make sure that any changes in your repo are committ
 
 1.  Convert HTML imports for ES6 module imports.
 
-	  `<link rel=import href="foo.html">`
+      `<link rel=import href="foo.html">`
 
     Becomes:
 
@@ -112,7 +112,7 @@ Before upgrading an element, make sure that any changes in your repo are committ
     import './foo.js';
     ```
 
-    For importing resources _that are part of the same project_ (for example, app-specific elements), use an absolute path (starting with `/`) or a relative path (starting with `./` or `../`) .
+    For importing resources _that are part of the same project_ (for example, app-specific elements), use an absolute path (starting with `/`) or a relative path (starting with `./` or `../`).
 
     For importing resources installed using npm, use a module specifier starting with the package name. For example, for Polymer imports, you'll usually replace a path like `/bower_components/polymer` with `@polymer/polymer`.
 
@@ -218,7 +218,7 @@ Before upgrading an element, make sure that any changes in your repo are committ
 
 1.  Update to newer polyfills
 
-	  Make sure you're depending on the v2 versions of the polyfills in `package.json`.
+      Make sure you're depending on the v2 versions of the polyfills in `package.json`.
 
     ```js
         "@webcomponents/webcomponentsjs": "^2.0.0",
@@ -272,7 +272,7 @@ Instead of appending to the `MyStuff` namespace, the module can simply export `M
 export const MyMixin = (base) => class extends base { ... };
 ```
 
-Generally remove `this` references that refer to the namespace object.
+Generally, remove `this` references that refer to the namespace object.
 
 ```js
 Foo.Bar = {
@@ -297,7 +297,7 @@ export function two() {
 }
 ```
 
-Likewise you don't need to bind functions where the `this` value should be the namespace object.
+Likewise, you don't need to bind functions where the `this` value should be the namespace object.
 
 ```js
 Foo.Bar = {
